@@ -6,3 +6,8 @@ def psycopg_connect():
     cur = con.cursor()
     return cur, con
 
+def close():
+    cur, con = psycopg_connect()
+    con.commit()
+    cur.close()
+    con.close()
