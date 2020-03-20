@@ -9,8 +9,6 @@ cur.execute("""create table fav_category(
             targetaudience varchar
             )""")
 
-
-
 con.commit()
 cur.close()
 con.close()
