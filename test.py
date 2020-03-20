@@ -21,12 +21,11 @@ def test():
     print(list)
 #test()
 
-def recommend():
+def recommend(profid):
     'Gives the recommendation'
     cur.execute("select * from fav_category")
     table = cur.fetchall()
     # profid = input("Voor profid in:")
-    profid= "5c472504dbed8900019d65f0"
     for row in table:
         if profid== row[0]:
             category= row[1]
@@ -39,7 +38,11 @@ def recommend():
             prodid = row[0]
 
     print("item {} is recommended for profile {}".format(prodid, profid))
-recommend()
+    return profid, prodid
+recommend("5c477cdc00ead60001294308")
 
 
-close()
+# close()
+con.commit()
+cur.close()
+con.close()

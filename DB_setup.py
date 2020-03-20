@@ -11,4 +11,6 @@ cur.execute("""create table fav_category(
 
 
 
-close()
+con.commit()
+cur.close()
+con.close()
