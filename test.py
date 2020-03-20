@@ -1,5 +1,5 @@
 from connection import psycopg_connect
-from connection import close
+
 
 cur, con=psycopg_connect()
 
@@ -42,7 +42,6 @@ def recommend(profid):
 recommend("5c477cdc00ead60001294308")
 
 
-# close()
 con.commit()
 cur.close()
 con.close()

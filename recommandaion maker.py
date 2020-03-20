@@ -1,5 +1,5 @@
 from connection import psycopg_connect
-from connection import close
+
 
 cur, con=psycopg_connect()
 
@@ -20,19 +20,16 @@ def overzetten():
     table = cur.fetchall()
     list=[] #for checking if an profid already hasbeen inserted.
     for row in table:
-        # try:
         profid = row[0]
         category = row[4]
         targetaudience = row[7]
         if profid not in list and targetaudience != None:
             cur.execute("insert into fav_category (profid, category, targetaudience ) values (%s,%s,%s)",(profid ,category, targetaudience))
         list.append(profid)
-        #
-        # except KeyError:
-        #     continue
+
 
 overzetten()
-# close()
+
 con.commit()
 cur.close()
 con.close()
